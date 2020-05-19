@@ -10,10 +10,10 @@
 	</parent>
 
 	<groupId>com.github.alhenk.springproject</groupId>
-	<artifactId>bidding</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>bidding</name>
-	<description>Training project</description>
+	<artifactId>bidding-monolithic</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>bidding-monolithic</name>
+	<description>Training project with monolithic architecture</description>
 
 	<properties>
 		<java.version>1.8</java.version>
