@@ -1,14 +1,19 @@
 package com.github.alhenk.bidding.monolithic.services;
 
+import com.github.alhenk.bidding.monolithic.aspect.Loggable;
 import com.github.alhenk.bidding.monolithic.domain.Offer;
 import com.github.alhenk.bidding.monolithic.domain.SecretValue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.time.*;
 import java.util.Random;
 import java.util.UUID;
 
+@Service(value = "dealer")
+@Qualifier("dealer")
 public class DealerServiceImpl implements DealerService {
     private static final Logger LOGGER = LogManager.getLogger(DealerServiceImpl.class.getName());
 
@@ -39,7 +44,9 @@ public class DealerServiceImpl implements DealerService {
     }
 
     @Override
-    public void publisOffer(Offer offer) {
-
+    @Loggable
+    public Offer fireOffer(Offer offer) {
+        LOGGER.info("Method fireOffer called");
+        return offer;
     }
 }

@@ -9,5 +9,5 @@ public interface DealerService {
 
     SecretValue createSecretValue(Offer offer);
 
-    void publisOffer(Offer offer);
+    Offer fireOffer(Offer offer);
 }
