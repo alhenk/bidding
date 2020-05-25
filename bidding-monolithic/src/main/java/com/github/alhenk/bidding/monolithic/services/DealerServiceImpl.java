@@ -1,6 +1,6 @@
 package com.github.alhenk.bidding.monolithic.services;
 
-import com.github.alhenk.bidding.monolithic.aspect.Loggable;
+import com.github.alhenk.bidding.monolithic.aspect.Announce;
 import com.github.alhenk.bidding.monolithic.domain.Offer;
 import com.github.alhenk.bidding.monolithic.domain.SecretValue;
 import org.apache.logging.log4j.LogManager;
@@ -55,7 +55,7 @@ public class DealerServiceImpl implements DealerService {
     }
 
     @Override
-    @Loggable
+    @Announce
     public Offer FaitesVosJeux(Offer offer) {
         LOGGER.info("Croupier: Faites Vos Jeux!");
         return offer;

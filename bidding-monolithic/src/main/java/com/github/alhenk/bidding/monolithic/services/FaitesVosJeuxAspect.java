@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class FaitesVosJeuxAspect {
     private static final Logger LOGGER = LogManager.getLogger(OfferService.class.getName());
 
-    @After("@annotation(com.github.alhenk.bidding.monolithic.aspect.Loggable)")
+    @After("@annotation(com.github.alhenk.bidding.monolithic.aspect.Announce)")
     public void logStartingGame(JoinPoint joinPoint)
     {
         final Offer offer =(Offer) joinPoint.getArgs()[0];
-        LOGGER.info("FaitesVosJeuxAspect.logStartingGame() : " + joinPoint.getSignature().getName());
+        //LOGGER.info("FaitesVosJeuxAspect.logStartingGame() : " + joinPoint.getSignature().getName());
         LOGGER.info("Game started with the offer : " + offer);
     }
 }
