@@ -17,5 +17,7 @@ public class SpringBiddingApplication {
         final CasinoService casino = (CasinoService)ctx.getBean("casino");
 
         casino.startGame();
+
+        SpringApplication.exit(ctx);
     }
 }

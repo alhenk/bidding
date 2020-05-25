@@ -18,6 +18,6 @@ public class FaitesVosJeuxAspect {
     {
         final Offer offer =(Offer) joinPoint.getArgs()[0];
         //LOGGER.info("FaitesVosJeuxAspect.logStartingGame() : " + joinPoint.getSignature().getName());
-        LOGGER.info("Game started with the offer : " + offer);
+        LOGGER.info("Game started : " + offer.getDescription());
     }
 }

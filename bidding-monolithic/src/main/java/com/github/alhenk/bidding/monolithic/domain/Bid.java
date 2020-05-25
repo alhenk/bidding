@@ -23,6 +23,7 @@ public class Bid {
     private Integer id;
     private String offerId;
     private String buyerId;
+    private String bidId;
     private Float stake;
     private ZonedDateTime creationDate;
     private ZonedDateTime expirationDate;

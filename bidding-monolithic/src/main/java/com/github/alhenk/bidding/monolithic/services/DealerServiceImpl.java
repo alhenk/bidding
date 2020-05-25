@@ -26,13 +26,13 @@ public class DealerServiceImpl implements DealerService {
 
     @Override
     public Offer createOffer() {
-        ZoneId zoneId = ZoneId.of( "Asia/Almaty" );
-        Period period = Period.ofDays( 1 ) ;
-        LocalDateTime currentDate = LocalDateTime.now( zoneId ) ;
-        LocalDateTime expirationDate = currentDate.plus( period ) ;
+        ZoneId zoneId = ZoneId.of("Asia/Almaty");
+        Period period = Period.ofDays(1);
+        LocalDateTime currentDate = LocalDateTime.now(zoneId);
+        LocalDateTime expirationDate = currentDate.plus(period);
         ZonedDateTime expirationZdt = expirationDate.atZone(zoneId);
         ZonedDateTime currentDateZdt = currentDate.atZone(zoneId);
-        Offer offer =Offer.builder()
+        Offer offer = Offer.builder()
                 .offerId(UUID.randomUUID().toString())
                 .price(10.0F)
                 .creationDate(currentDateZdt)
@@ -46,7 +46,7 @@ public class DealerServiceImpl implements DealerService {
     @Override
     public SecretValue createSecretValue(Offer offer) {
         final int secret = new Random().nextInt(6 - 1 + 1) + 1;
-        SecretValue secretValue =SecretValue.builder()
+        SecretValue secretValue = SecretValue.builder()
                 .offerId(offer.getOfferId())
                 .secretValue(Integer.toString(secret))
                 .build();

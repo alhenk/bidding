@@ -16,6 +16,7 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Random;
+import java.util.UUID;
 
 @Service(value = "buyer")
 @Qualifier("buyer")
@@ -31,7 +32,7 @@ public class BuyerServiceImpl implements BuyerService {
     {
         final Offer offer =(Offer) joinPoint.getArgs()[0];
         final Bid bid = createBid(offer);
-        LOGGER.info("Annonce : " + bid);
+        LOGGER.info("Joueur : Annonce! Mon bet " + bid.getGuessValue());
     }
 
     public Bid createBid(Offer offer){
@@ -40,6 +41,7 @@ public class BuyerServiceImpl implements BuyerService {
         ZonedDateTime currentDateZdt = currentDate.atZone(zoneId);
         final int guess = new Random().nextInt(6 - 1 + 1) + 1;
         Bid bid = Bid.builder()
+                .bidId(UUID.randomUUID().toString())
                 .creationDate(currentDateZdt)
                 .offerId(offer.getOfferId())
                 .stake(10.0F)
