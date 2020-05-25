@@ -35,6 +35,9 @@ public class Casino implements CasinoService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        LOGGER.info("Rien ne va plus!");
+
         final List<Winner> winners = moderator.findWinners(offer);
         if (winners.size() != 0) {
             for (Winner winner : winners) {
