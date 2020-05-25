@@ -26,6 +26,6 @@ class DealerServiceTest {
     void dealerFireOffer() {
         final Offer offer = dealerService.createOffer();
         LOGGER.info("Offer : " + offer);
-        Assertions.assertNotNull(dealerService.fireOffer(offer));
+        Assertions.assertNotNull(dealerService.FaitesVosJeux(offer));
     }
 }
