@@ -10,6 +10,6 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>buyer-service-soa</artifactId>
+    <artifactId>dealer-service</artifactId>
 
 </project>

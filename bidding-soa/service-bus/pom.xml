@@ -7,9 +7,9 @@
     <parent>
         <groupId>com.github.alhenk.bidding.soa</groupId>
         <artifactId>bidding-soa</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
-    <artifactId>moderator-service-soa</artifactId>
+    <artifactId>service-bus</artifactId>
 
 </project>
