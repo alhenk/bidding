@@ -11,7 +11,7 @@
 
 	<groupId>com.github.alhenk.bidding.monolithic</groupId>
 	<artifactId>bidding-monolithic</artifactId>
-	<version>${revision}</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>bidding-monolithic</name>
 	<description>Training project with monolithic architecture</description>
