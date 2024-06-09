@@ -33,7 +33,7 @@ public class ModeratorServiceImpl implements ModeratorService {
 
     @Override
     public List<Winner> findWinners(Offer offer) {
-        List<Winner> winners = new LinkedList<>();
+        List<Winner> winners = new LinkedList<>(); //TODO reconsider collection type
         final Iterable<SecretValue> secrets = secretValueService.listAllSecretValues();
         SecretValue secret = null;
         for (SecretValue secretValue : secrets) {

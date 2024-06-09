@@ -23,6 +23,7 @@ public class BuyerServiceImpl implements BuyerService {
     private static final Logger LOGGER = LogManager.getLogger(DealerServiceImpl.class.getName());
     public static final float STAKE = 10.0F;
     public static final int DICE_SIDES = 6;
+    public static final String ZONE_ID = "Asia/Almaty";
 
     private final BidService bidService;
 
@@ -39,7 +40,7 @@ public class BuyerServiceImpl implements BuyerService {
     }
 
     public Bid createBid(Offer offer){
-        ZoneId zoneId = ZoneId.of( "Asia/Almaty" );
+        ZoneId zoneId = ZoneId.of(ZONE_ID);
         LocalDateTime currentDate = LocalDateTime.now( zoneId ) ;
         ZonedDateTime currentDateZdt = currentDate.atZone(zoneId);
         final int guess = new Random().nextInt(DICE_SIDES - 1 + 1) + 1;
