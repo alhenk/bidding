@@ -6,7 +6,6 @@ import com.github.alhenk.bidding.monolithic.domain.SecretValue;
 import com.github.alhenk.bidding.monolithic.domain.Winner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +16,20 @@ import java.util.List;
 @Qualifier("moderator")
 public class ModeratorServiceImpl implements ModeratorService {
     private static final Logger LOGGER = LogManager.getLogger(ModeratorServiceImpl.class.getName());
+    //TODO extract PRIZE in configuration properties
+    public static final float PRIZE = 10.0F;
 
-    @Autowired
-    private OfferService offerService;
-    @Autowired
-    private BidService bidService;
-    @Autowired
-    private SecretValueService secretValueService;
-    @Autowired
-    private WinnerService winnerService;
+    private final OfferService offerService;
+    private final BidService bidService;
+    private final SecretValueService secretValueService;
+    private final WinnerService winnerService;
+
+    public ModeratorServiceImpl(OfferService offerService, BidService bidService, SecretValueService secretValueService, WinnerService winnerService) {
+        this.offerService = offerService;
+        this.bidService = bidService;
+        this.secretValueService = secretValueService;
+        this.winnerService = winnerService;
+    }
 
     @Override
     public List<Winner> findWinners(Offer offer) {
@@ -35,12 +39,12 @@ public class ModeratorServiceImpl implements ModeratorService {
         for (SecretValue secretValue : secrets) {
             if (secretValue.getOfferId().equals(offer.getOfferId())) {
                 secret = secretValue;
-                LOGGER.debug("Secret value : " + secret.getSecretValue() + ", offerId = " + offer.getOfferId());
+                LOGGER.debug("Secret value : {}, offerId = {}", secret.getSecretValue(), offer.getOfferId());
                 break;
             }
         }
         if (secret == null) {
-            LOGGER.info ("No Secret value found for Offer " + offer.getOfferId() );
+            LOGGER.info("No Secret value found for Offer {}", offer.getOfferId());
             return winners;
         }
         final Iterable<Bid> bids = bidService.listAllBids();
@@ -58,7 +62,7 @@ public class ModeratorServiceImpl implements ModeratorService {
         Winner winner = Winner.builder()
                 .offerId(offer.getOfferId())
                 .bidId(bid.getBidId())
-                .prize(10.0F)
+                .prize(PRIZE)
                 .build();
         winnerService.saveWinner(winner);
         return winner;
